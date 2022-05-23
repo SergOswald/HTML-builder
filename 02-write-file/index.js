@@ -3,31 +3,39 @@ var fs = require('fs');
 const path = require('path');
 
 const path1 = path.format({
-    dir: 'C:\\IT\\RSS\\Stage1\\Serg\\HTML-builder\\02-write-file',
+    dir: 'F:\\5-IT\\RSS\\Stage-1\\HTML-builder\\02-write-file',
     base: 'text.txt',
 });
 
 const readline = require('readline');
 
-const { stdin: input, stdout: output } = require('process');
-
-const rl = readline.createInterface({ input, output });
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 var writeableStream = fs.createWriteStream( path1 );
 
- 
-rl.question("Enter text:", function( answer ) {
+var stream = new fs.ReadStream( path1 );
+
+console.log( "Enter text:" ) ;
+
+rl.on( "line" , ( answer ) => {
     if( answer !== "exit" ) {
-    
-    writeableStream.write( `\n${answer}`);
-    
-    }else{
-        console.log("Thank you.");
-        rl.close();
+          
+        writeableStream.write( `${answer}\n`);
         
-    } ;
-   
+        }else{
+            console.log("Thank you.");
+            rl.close();
+            
+        } ;
 });
+
+
+
+
+
 
 
 
