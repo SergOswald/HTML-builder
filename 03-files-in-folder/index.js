@@ -1,17 +1,27 @@
 var fs = require('fs');
 
-/*
+
 
 const path = require('path');
 
 const path1 = path.format({
-    dir: 'F:\\5-IT\\RSS\\Stage-1\\HTML-builder\\03-write-file\\secret-folder',
-    base: 'text.txt',
+    dir: './03-files-in-folder/secret-folder',
+    //base: 'text.txt',
 });
 
-*/
 
-fs.readdir("./secret-folder", (err, data) => {
-	if(err) { throw err } ;
-  	console.log(data) ;
+fs.readdir( "./03-files-in-folder/secret-folder" , (err, data) => {
+    if (err) console.log(err) ;
+  	let len = data.length ;
+
+      for( let i = 0 ; i < len ; i++ ) {
+          /*
+        fs.stat(path1, function(err, data[ i ] ) {
+            var siz = stats.size;
+            
+        }) ;
+*/
+        console.log( data[ i ] + "-" ) ;
+
+      }
 })
