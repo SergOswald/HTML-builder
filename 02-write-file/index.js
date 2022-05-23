@@ -3,7 +3,8 @@ var fs = require('fs');
 const path = require('path');
 
 const path1 = path.format({
-    dir: 'F:\\5-IT\\RSS\\Stage-1\\HTML-builder\\02-write-file',
+    //dir: 'F:\\5-IT\\RSS\\Stage-1\\HTML-builder\\02-write-file',
+    dir: './02-write-file',
     base: 'text.txt',
 });
 
@@ -18,29 +19,23 @@ var writeableStream = fs.createWriteStream( path1 );
 
 var stream = new fs.ReadStream( path1 );
 
+
 console.log( "Enter text:" ) ;
 
 rl.on( "line" , ( answer ) => {
-    if( answer !== "exit" ) {
+    if( answer === "exit" ) {
           
-        writeableStream.write( `${answer}\n`);
+        console.log("Thank you.");
+        rl.close();
         
         }else{
-            console.log("Thank you.");
-            rl.close();
+            
+            writeableStream.write( `${answer}\n`);
+            
             
         } ;
+
 });
-
-
-
-
-
-
-
-
-
-
 
 
 

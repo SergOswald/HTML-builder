@@ -3,7 +3,8 @@ var fs = require('fs');
 const path = require('path');
 
 const path1 = path.format({
-    dir: 'C:\\IT\\RSS\\Stage1\\Serg\\HTML-builder\\01-read-file',
+    //dir: 'C:\\IT\\RSS\\Stage1\\Serg\\HTML-builder\\01-read-file',
+    dir: './01-read-file',
     base: 'text.txt',
 });
  
