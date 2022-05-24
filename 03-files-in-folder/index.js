@@ -21,7 +21,7 @@ fs.readdir( "./03-files-in-folder/secret-folder" , (err, data) => {
             
         }) ;
 */
-        console.log( data[ i ] + "-" ) ;
+        console.log( data[ i ].slice( 0 , data[ i ].length - 3 ) + " - " + data[ i ].slice( -3 ) + " - " ) ;
 
       }
 })
