@@ -25,7 +25,7 @@ fs.readdir(folderName, {withFileTypes: true}, (err, files) => {
                 if (err) {
                   console.error(err);
                 } ;
-                console.log( file.name.slice( 0 , file.name.length - ext.length ) + " - " +  ext + " - "  + stats.size + "kb" );
+                console.log( file.name.slice( 0 , file.name.length - ext.length ) + " - " +  ext + " - "  + stats.size + " b" );
             });
        
             
