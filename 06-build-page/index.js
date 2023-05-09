@@ -3,10 +3,6 @@ const path = require('path');
 
 let folderName = "./06-build-page/project-dist" ;
 
-let assetsfolderName = "./06-build-page/assets" ;
-
-let newassetsfolderName = "./06-build-page/project-dist/assets" ;
-
 let oldfileName = "./06-build-page/template.html";
 
 let newfileName = "./06-build-page/project-dist/index.html";
@@ -74,13 +70,12 @@ let stylesfolderName = "./06-build-page/styles" ;
 let stylesfolderNameNew = "./06-build-page/project-dist/styles" ;
 
 fs.mkdir( stylesfolderNameNew, err => {
-   if( err ) throw err; 
-   console.log( 'Папка "project-dist/styles" успешно создана' );
+  if( err ) throw err; 
 });
 
 const path1 = path.format({
-    dir: stylesfolderName ,
-    base: "footer.css",
+  dir: stylesfolderName ,
+  base: "footer.css",
 });
 
 const path2 = path.format({
@@ -141,5 +136,63 @@ fs.readFile( path3, 'utf8', ( err, fileContent ) => {
 };
 
 fileHandler();
+
+//====
+
+// Перемещение папки assets in project-dist с вложениями
+
+let assetsfolderName = "./06-build-page/assets" ;
+
+let newassetsfolderName = "./06-build-page/project-dist/assets" ;
+
+fs.mkdir( newassetsfolderName, err => {
+  if( err ) throw err; 
+});
+
+fs.mkdir( "./06-build-page/project-dist/assets/fonts", err => {
+  if( err ) throw err; 
+});
+
+fs.mkdir( "./06-build-page/project-dist/assets/img", err => {
+  if( err ) throw err; 
+});
+
+fs.mkdir( "./06-build-page/project-dist/assets/svg", err => {
+  if( err ) throw err; 
+});
+
+fs.readdir( "./06-build-page/assets/fonts", { withFileTypes: true }, ( err, files) => {
+  if ( err ) { throw err; };
+
+  files.forEach( file => {
+    fs.copyFile( "./06-build-page/assets/fonts" + `/${file.name}`, 
+    "./06-build-page/project-dist/assets/fonts" + `/${file.name}` , 
+    (err) => { if ( err ) { console.log( "Error Found:" , err ); } });
+  }) ;
+
+}) ;
+
+fs.readdir( "./06-build-page/assets/img", { withFileTypes: true }, ( err, files) => {
+  if ( err ) { throw err; };
+
+  files.forEach( file => {
+    fs.copyFile( "./06-build-page/assets/img" + `/${file.name}`, 
+    "./06-build-page/project-dist/assets/img" + `/${file.name}` , 
+    (err) => { if ( err ) { console.log( "Error Found:" , err ); } });
+  }) ;
+
+}) ;
+
+fs.readdir( "./06-build-page/assets/svg", { withFileTypes: true }, ( err, files) => {
+  if ( err ) { throw err; };
+
+  files.forEach( file => {
+    fs.copyFile( "./06-build-page/assets/svg" + `/${file.name}`, 
+    "./06-build-page/project-dist/assets/svg" + `/${file.name}` , 
+    (err) => { if ( err ) { console.log( "Error Found:" , err ); } });
+  }) ;
+  console.log( 'Папка "project-dist/assets" со всеми вложениями успешно создана' );
+
+}) ;
 
 //====
