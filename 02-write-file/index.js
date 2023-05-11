@@ -31,11 +31,17 @@ rl.on( "line" , ( answer ) => {
         }else{
             
             writeableStream.write( `${answer}\n`);
-            console.log( "Enter exit:") ;
+ //           console.log( "Enter exit:") ;
             
             
         } ;
 
+});
+
+rl.on('SIGINT', () =>
+{
+    console.log("Thank you.");
+    rl.close();
 });
 
 
